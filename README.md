@@ -12,7 +12,7 @@ Install dependencies: (Python Packages)
 - pip install python-csv
 - pip install jsonlib
 
-**Configuration:**
+## Configuration
 To properly configure and run the Lighthouse Performance Metrics Fetcher script, follow these steps:
 
 - Google PageSpeed Insights API Key:
@@ -27,7 +27,7 @@ Replace the placeholder 'https://example.com' in fetch_metrics.py with your actu
 Prepare a CSV file (slug.csv) with the list of slugs. Each row should contain one slug.
 Ensure the file is in the same directory as fetch_metrics.py or provide the correct path to the file.
 
-**Output**
+## Output
 The script generates performance_report.csv with the following columns:
 
 - Slug
