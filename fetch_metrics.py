@@ -9,10 +9,10 @@ API_KEY = 'API key'
 BASE_URL = 'https://example.com' 
 
 # Fetches Lighthouse data for a given URL using the Google PageSpeed Insights API
-def fetch_lighthouse_data(url, api_key):
+def fetch_lighthouse_data(url, api_key, strategy='mobile') # Default strategy is 'mobile' if you want for desktop then while calling function set strategy = 'desktop'
     # Construct the API endpoint URL
     endpoint = f"https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url={url}&key={api_key}"
-    response = requests.get(endpoint) # Make the API reques
+    response = requests.get(endpoint) # Make the API request
     if response.status_code == 200: # Check if the response status is 200 (OK)
         return response.json() # Return the JSON data
     else:
@@ -65,7 +65,7 @@ def main():
             for row in reader:
                 slug = row[0]  # Assuming slug is in the first column
                 url = f"{BASE_URL}/{slug}"  # Combine base URL and slug to form complete URL
-                data = fetch_lighthouse_data(url, API_KEY)
+                data = fetch_lighthouse_data(url, API_KEY, strategy = 'mobile') #here strategy='mobile' means data will be generated for mobile devices and by default it gives mobile device performance stats
                 metrics = parse_lighthouse_data(data) # Parse relevant performance metrics from the data
                 if metrics: # If metrics are successfully parsed
                    # Write the metrics to the output CSV file
